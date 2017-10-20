@@ -1693,6 +1693,32 @@ describe('Select', () => {
 		});
 	});
 
+	describe('with allowMissingOptions=true', () => {
+		beforeEach(() => {
+			options = [
+				{ value: 'one', label: 'One' },
+				{ value: 'two', label: 'Two', clearableValue: false },
+				{ value: 'three', label: 'Three' },
+				{ value: 'four', label: 'Four' }
+			];
+
+			// Render an instance of the component
+			wrapper = createControlWithWrapper({
+				value: [{ value: 'five', label: 'Five' }],
+				options: options,
+				searchable: true,
+				multi: true
+			});
+		});
+
+		it('renders a value that is not in the options', () => {
+			expect(instance, 'to contain',
+				<span className="Select-multi-value-wrapper">
+					<div><span className="Select-value-label">Five</span></div>
+				</span>);
+		});
+	});
+
 	describe('with multi-select', () => {
 
 		beforeEach(() => {
