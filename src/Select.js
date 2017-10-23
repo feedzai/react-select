@@ -491,6 +491,7 @@ class Select extends React.Component {
 		for (var i = 0; i < options.length; i++) {
 			if (options[i][valueKey] === value) return options[i];
 		}
+		if (props.allowMissingOptions) return value;
 	}
 
 	setValue (value) {
@@ -1052,10 +1053,11 @@ Select.propTypes = {
 	'aria-describedby': PropTypes.string, // HTML ID(s) of element(s) that should be used to describe this input (for assistive tech)
 	'aria-label': PropTypes.string,       // Aria label (for assistive tech)
 	'aria-labelledby': PropTypes.string,  // HTML ID of an element that should be used as the label (for assistive tech)
+	allowMissingOptions: PropTypes.bool,  // allows the value prop to have entries that are not listed in the options props
 	arrowRenderer: PropTypes.func,        // Create drop-down caret element
 	autoBlur: PropTypes.bool,             // automatically blur the component when an option is selected
-	autofocus: PropTypes.bool,            // deprecated; use autoFocus instead
 	autoFocus: PropTypes.bool,            // autofocus the component on mount
+	autofocus: PropTypes.bool,            // deprecated; use autoFocus instead
 	autosize: PropTypes.bool,             // whether to enable autosizing or not
 	backspaceRemoves: PropTypes.bool,     // whether backspace removes an item if there is no text input
 	backspaceToRemoveMessage: PropTypes.string,  // Message to use for screenreaders to press backspace to remove the current item - {label} is replaced with the item label
@@ -1125,6 +1127,7 @@ Select.propTypes = {
 
 Select.defaultProps = {
 	arrowRenderer: defaultArrowRenderer,
+	allowMissingOptions: false,
 	autosize: true,
 	backspaceRemoves: true,
 	backspaceToRemoveMessage: 'Press backspace to remove {label}',
