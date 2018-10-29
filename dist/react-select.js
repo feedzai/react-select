@@ -565,7 +565,7 @@ var Value = function (_React$Component) {
 				this.props.children
 			) : React__default.createElement(
 				'span',
-				{ className: className, role: 'option', 'aria-selected': 'true', id: this.props.id },
+				{ className: className, 'aria-selected': 'true', id: this.props.id },
 				this.props.children
 			);
 		}
@@ -1415,6 +1415,7 @@ var Select$1 = function (_React$Component) {
 
 			var inputProps = _extends({}, this.props.inputProps, {
 				role: 'combobox',
+				type: 'text',
 				'aria-expanded': '' + isOpen,
 				'aria-owns': ariaOwns,
 				'aria-haspopup': '' + isOpen,
@@ -1447,7 +1448,7 @@ var Select$1 = function (_React$Component) {
 				var _ariaOwns = classNames(defineProperty({}, this._instancePrefix + '-list', isOpen));
 
 				return React__default.createElement('div', _extends({}, divProps, {
-					role: 'combobox',
+					role: this.props.disabled ? undefined : 'combobox',
 					'aria-expanded': isOpen,
 					'aria-owns': _ariaOwns,
 					'aria-activedescendant': isOpen ? this._instancePrefix + '-option-' + focusedOptionIndex : this._instancePrefix + '-value',

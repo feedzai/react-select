@@ -755,6 +755,7 @@ class Select extends React.Component {
 		const inputProps = {
 			...this.props.inputProps,
 			role: 'combobox',
+            type: 'text',
 			'aria-expanded': '' + isOpen,
 			'aria-owns': ariaOwns,
 			'aria-haspopup': '' + isOpen,
@@ -786,7 +787,7 @@ class Select extends React.Component {
 			return (
 				<div
 					{...divProps}
-					role="combobox"
+                    role={this.props.disabled ? undefined : 'combobox'}
 					aria-expanded={isOpen}
 					aria-owns={ariaOwns}
 					aria-activedescendant={isOpen ? this._instancePrefix + '-option-' + focusedOptionIndex : this._instancePrefix + '-value'}
